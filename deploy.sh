@@ -5,7 +5,7 @@ sudo apt update
 
 cd ./NetflixMovieCatalog
 
-source .venv/bin/activate
+source venv/bin/activate
 
 cd ..
 
