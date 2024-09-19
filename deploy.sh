@@ -1,27 +1,22 @@
 #!/bin/bash
 set -e
 
-echo ""
-echo "Installing python3.12-venv..."
-echo "--------------------------------"
-sudo apt-get update 
-sudo apt-get install -y python3.12-venv
+sudo apt update
 
-echo ""
-echo "Creating a Python virtual environment..."
-echo "--------------------------------"
-python3 -m venv venv
+cd ./NetflixMovieCatalog
 
-echo ""
-echo "Activating the Python virtual environment..."
-echo "--------------------------------"
-source venv/bin/activate
+source .venv/bin/activate
 
-echo ""
-echo "Install Python dependencies..."
-echo "--------------------------------"
-pip install flask
-echo ""
-echo "Starting the Python application..."
-echo "--------------------------------"
-python app.py
+cd ..
+
+sudo systemctl stop simplepy.service
+
+sudo systemctl enable simplepy.service
+
+sudo systemctl start simplepy.service
+
+sudo apt update
+
+sudo systemctl start nginx
+
+sudo apt update
